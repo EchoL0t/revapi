@@ -1,0 +1,7 @@
+.terragrunt-cache/
+.DS_Store/
+
+generated.*.yaml
+.generated**
+
+.terraform.lock.hcl
