@@ -11,6 +11,11 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# Health check endpoint
+@app.get("/health", status_code=200)
+def health_check():
+    return {"status": "ok"}
+
 
 # Dependency
 def get_db():
