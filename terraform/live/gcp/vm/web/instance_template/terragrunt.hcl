@@ -16,6 +16,8 @@ locals {
   project_id = local.env_vars.locals.project_id
   region = local.env_vars.locals.region
   docker_image_version = get_env("GITHUB_SHA", "")
+  truncated_sha = substr(local.docker_image_version, 0, 8)
+  instance_template_name = "${local.env}-web-tmpl-${local.truncated_sha}"
 }
 
 dependency "sa" {
@@ -28,17 +30,17 @@ dependency "sa" {
 
 inputs = {
   project_id                 = "${local.project_id}"
-  name_prefix                = "${local.env}-web"
+  name_prefix                = "${local.instance_template_name}"
   region                     = "${local.region}"
   zone                       = "${local.region}-a"
   subnetwork                 = "${local.env}-sapi-de"
   subnetwork_project         = "${local.project_id}"
   disk_size_gb               = 20
   disk_type                  = "pd-standard"
-  machine_type               = "e2-custom-2-4096"
+  machine_type               = "t2d-standard-1"
   source_image               = "ubuntu-2004-focal-v20231130"
   source_image_project       = "ubuntu-os-cloud"
-  startup_script             = [templatefile("startup_script.sh", { docker_image_version = local.docker_image_version })]
+  startup_script             = templatefile("startup_script.sh", { docker_image_version = local.docker_image_version })
   metadata                   = {
     user-data = <<EOT
     #cloud-config

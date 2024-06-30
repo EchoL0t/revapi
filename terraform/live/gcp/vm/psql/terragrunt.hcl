@@ -3,7 +3,7 @@ include "state" {
 }
 
 terraform {
-    source = "tfr:///terraform-google-modules/vm/google//modules/compute_instance?version=10.1.1"
+    source = "tfr:///terraform-google-modules/vm/google//modules/umig?version=11.1.0"
 }
 
 locals {
@@ -26,7 +26,6 @@ inputs = {
   project_id                 = "${local.project_id}"
   hostname                   = "${local.env}-sqpi-psql"
   region                     = "${local.region}"
-  zone                       = "${local.region}-a"
   subnetwork                 = "${local.env}-sapi-de"
   subnetwork_project         = "${local.project_id}"
   num_instances              = 3

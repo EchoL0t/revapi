@@ -24,8 +24,8 @@ inputs = {
     ingress_rules = [
       {
         name                    = "${local.env}-allow-de"
-        priority                = 1000
-        ranges             = null
+        priority                = 101
+        ranges                  = null
         destination_ranges      = ["172.16.99.0/24"]
         source_ranges      = ["172.16.99.0/24"]
         allow = [

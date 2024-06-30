@@ -3,7 +3,7 @@ include "state" {
 }
 
 terraform {
-  source = "tfr:///terraform-google-modules/lb-http/google//?version=11.1.0"
+  source = "tfr:///terraform-google-modules/lb-http/google//?version=11.0.0"
 }
 
 locals {
@@ -14,14 +14,15 @@ locals {
 }
 
 dependency "network" {
-  config_path = "../network"
+  config_path = "../../../network/network"
 }
 
 dependency "mig" {
-  config_path = "../../vm/web"
+  config_path = "../"
 }
 
 inputs = {
+    project      =  "${local.project_id}"
     project_id   =  "${local.project_id}"
     name = "${local.env}-lb-sapi"
     target_tags = ["web"]

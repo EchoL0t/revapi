@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# Ensure a Docker image version is provided
-if [ -z "$1" ]; then
-  echo "Docker image version argument missing"
-  exit 1
-fi
-
-DOCKER_IMAGE_VERSION=$1
-
-# Export the Docker image version as an environment variable
-export DOCKER_IMAGE_VERSION
-
-
 sudo apt update
 
 # Install Python 3.8 and git
@@ -35,7 +23,7 @@ source ./bin/activate
 pip install ansible
 
 # Run the Ansible playbook (replace <PLAYBOOK.yml> with your playbook file)
-ansible-playbook ansible/web/deploy_container.yaml -e "docker_image_version=${DOCKER_IMAGE_VERSION}"
+ansible-playbook ansible/web/deploy_container.yaml -e "docker_image_version=${docker_image_version}"
 
 # Deactivate the virtual environment
 deactivate
