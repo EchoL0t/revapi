@@ -1,0 +1,19 @@
+FROM python:3.8-slim
+
+RUN apt update && apt-get install -y libpq-dev gcc
+
+# Set the working directory
+WORKDIR /code
+
+# Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install pytest pytest-asyncio httpx
+# Copy the application code
+COPY . .
+
+# Set environment variable for the test database
+ENV DATABASE_URL=sqlite:///./test.db
+
+# Run tests
+CMD ["pytest", "sapi/tests"]
