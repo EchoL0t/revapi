@@ -1,4 +1,4 @@
-*** Deploy GCP Infra ***
+## Deploy GCP Infra 
 1. gcloud auth login \
    gcloud auth application-default login
 2. Update terraform/live/gcp/env.hcl with right project_id and region. 
@@ -7,7 +7,7 @@
 4. terragrunt run-all plan \
    terragrunt run-all apply
 
-*** Deploy postgresql ***
+## Deploy postgresql 
 1. git clone https://github.com/vitabaks/postgresql_cluster.git ansible/postgresql_cluster
 2. cp inventory ansible/postgresql_cluster \
    cp main.yml  ansible/postgresql_cluster/vars
@@ -17,6 +17,9 @@
 6. ansible all -m ping \
    ansible-playbook deploy_pgcluster.yml
 
+## System Diagram
+
+<img width="660" alt="pic" src="https://github.com/EchoL0t/revapi/assets/59018133/60a9c2aa-17b6-437a-820f-08acd04e36af">
 
 
 
