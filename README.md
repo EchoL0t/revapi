@@ -4,8 +4,7 @@
 2. Update terraform/live/gcp/env.hcl with right project_id and region. 
    Specify your ssh public key in terraform/live/gcp/vm/psql/instance_template/terragrunt.hcl
 3. export GITHUB_SHA=$(git rev-parse HEAD)
-4. terragrunt run-all plan \
-   terragrunt run-all apply
+4. terragrunt run-all apply
 
 ## Deploy postgresql 
 1. git clone https://github.com/vitabaks/postgresql_cluster.git ansible/postgresql_cluster
