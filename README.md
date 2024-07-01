@@ -17,6 +17,9 @@
 6. ansible all -m ping \
    ansible-playbook deploy_pgcluster.yml
 
+## Run tests
+   run_test.sh
+
 ## System Diagram
 
 <img width="660" alt="pic" src="https://github.com/EchoL0t/revapi/assets/59018133/60a9c2aa-17b6-437a-820f-08acd04e36af">
