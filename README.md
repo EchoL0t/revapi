@@ -17,7 +17,7 @@
    ansible-playbook deploy_pgcluster.yml
 
 ## Run tests
-   run_test.sh
+   run_tests.sh
 
 ## System Diagram
 
